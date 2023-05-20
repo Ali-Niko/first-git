@@ -1,0 +1,9 @@
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>
+
+<p *ngIf="product && product.year < 2012">
+  <button type="button" (click)="deleteProduct.emit(product.id)">
+    Delete Old ones
+  </button>
+</p>

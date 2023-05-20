@@ -1,0 +1,26 @@
+<h1>Products</h1>
+
+<div *ngFor="let product of products">
+  <a
+    [title]="product.name + 'details'"
+    [routerLink]="['/products', product.id]"
+  >
+    <h2>
+      {{ product.name }}
+    </h2>
+  </a>
+
+  <p *ngIf="product.description; else content">
+    {{ product.description }}
+  </p>
+  <p>
+    <ng-template #content><i>There is no description</i></ng-template>
+  </p>
+
+  <button type="button" (click)="share()">Share with Friends</button>
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()"
+    (deleteProduct)="onDelete($event)"
+  ></app-product-alerts>
+</div>
